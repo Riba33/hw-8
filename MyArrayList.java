@@ -1,14 +1,13 @@
-import java.util.ListIterator;
-import java.util.*;
-
 public class MyArrayList<V> {
-    private Object[] list = new Object[0];
+    private Object[] list = new Object[10];
     private int size = 0;
 
     public void add(V value) {
-        Object[] newList = new Object[list.length * 2 + 1];
-        System.arraycopy(list,0,newList,0, list.length);
-        list = newList;
+        if (size == list.length) {
+            Object[] newList = new Object[list.length * 3/2 +1];
+            System.arraycopy(list,0,newList,0, list.length);
+            list = newList;
+        }
         list[size] = value;
         size++;
     }
@@ -32,7 +31,7 @@ public class MyArrayList<V> {
         } return (V) list[index];
     }
     public void clear() {
-        list = new Object[0];
+        list = new Object[10];
         size = 0;
     }
     public int size() {
@@ -44,7 +43,6 @@ public class MyArrayList<V> {
         return s.trim();
     }
 }
-
 
 
 
